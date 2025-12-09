@@ -1,9 +1,7 @@
-From node:18.20.8-slim
-
+FROM node:18.20.8-slim
 WORKDIR /app
-ADD . /app
-RUN npm
-
+COPY package*.json ./
+RUN npm install
+COPY . .
 EXPOSE 8080
-
-ENTRYPOINT ["node", "app.js"]
+CMD ["npm", "start"]
